@@ -22,19 +22,15 @@ string[] CreateArray()
 string[] FilterArray(string[] array, int filterLength)
 {
     int newArrayLength = 0;
-    foreach (string i in array)
+    string[] newArray = new string[array.Length];
+    for (int j = 0; j < array.Length; j++)
     {
-        if (i.Length <= filterLength) newArrayLength++; 
-    }
-    string[] newArray = new string[newArrayLength];
-    for (int j = 0, k = 0; j < array.Length; j++)
-    {
-        string element = array[j];
-        if (element.Length <= filterLength)
+        if (array[j].Length <= filterLength)
         {
-            newArray[k] = array[j];
-            k++;
+            newArray[newArrayLength] = array[j];
+            newArrayLength++;
         } 
     }
+    Array.Resize(ref newArray, newArrayLength);
     return newArray;
 }
